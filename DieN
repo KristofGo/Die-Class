@@ -1,21 +1,24 @@
 public class DieN {
-    
-    private int value;
-    
-    public DieN() {
-        roll();
-    }
 
-    public void roll() {
-        value = (int)(Math.random()*20) + 1;
-    }
-    
-    public int getValue() {
-        return value;
-    }
-    
-    public int rollAndGetValue() {
-        roll();
-        return getValue();
-    }
+  private int value; // Has the value of the die
+  
+  private int numSides; // Has the number of sides on the Die
+
+  public DieN(int numSides) {
+    this.numSides = numSides;
+    this.roll();
+  }
+
+  public int getValue() {
+    return value;
+  }
+
+  public void roll() {
+    this.value = (int)(Math.random() * numSides) + 1;
+  }
+
+  public int rollAndGetValue() {
+    roll();
+    return getValue();
+  }
 }
