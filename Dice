@@ -1,0 +1,25 @@
+public class Dice {
+    public int rollAndGetValue() {
+        this.roll();
+        return this.value;
+    }
+    
+    private int value;
+    public void roll() {
+    this.value = (int) (Math.random() * 6) + 1;
+    }
+    
+    public int getValue() {
+    return this.value;
+    }
+    
+    public static int rollTwoDiceAndGetValue() {
+        Die6 die1 = new Die6();
+        Die6 die2 = new Die6();
+
+        int value1 = die1.rollAndGetValue();
+        int value2 = die2.rollAndGetValue();
+
+        return value1 + value2;
+    }
+}
