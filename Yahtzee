@@ -1,34 +1,34 @@
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-public class Yahtzee
+public class Yahtzee //Is the functionality
 {
-    Die6 dieA;
-    Die6 dieB;
-    Die6 dieC;
-    Die6 dieD;
+    Die6 dieA; //Each die is represented by an instance of the `Die6` class. 
+    Die6 dieB; //These five lines define private instance variables for each die.
+    Die6 dieC; //With these variables, the individual dice objects can be accessed 
+    Die6 dieD; //and manipulated within the `Yahtzee` class.
     Die6 dieE;
-    int number;
-    public Yahtzee() {
+    int number; //declares varible number
+    public Yahtzee() { 
         dieA = new Die6();
         dieB = new Die6();
-        dieC = new Die6();
+        dieC = new Die6(); //connects to the die6 project
         dieD = new Die6();
         dieE = new Die6();
     }
-    public void allRoll() {
+    public void allRoll() { //will roll all die at once 
         dieA.roll();
         dieB.roll();
         dieC.roll();
         dieD.roll();
         dieE.roll();
-    }
-    public void roll(int dieNumber) {
-        if (dieNumber == 1) {
-            dieA.roll();
+    } //establishes peramiter of sides
+    public void roll(int dieNumber) { //rolls a specific die based on the provided die number (1-5)
+        if (dieNumber == 1) { //uses if statements to determine which die to roll
+            dieA.roll(); 
         } else if (dieNumber == 2) {
             dieB.roll();
-        } else if (dieNumber == 3) {
+        } else if (dieNumber == 3) { //whenever a player want to roll a specific die
             dieC.roll();
         } else if (dieNumber == 4) {
             dieD.roll();
@@ -37,7 +37,7 @@ public class Yahtzee
         }           
     }
     
-    public int getvalue1() {
+    public int getvalue1() { //return current value of each die
         return dieA.getValue();
     }
     public int getvalue2() {
@@ -53,12 +53,12 @@ public class Yahtzee
         return dieE.getValue();
     }
     
-    public int rollAngGetValue() {
+    public int rollAndGetValue() { //method will roll and get value
         allRoll();
-        return getvalue1();
+        return getvalue1(); //to roll all die but get one die
     }
     
-    public String summarize() {
+    public String summarize() { //gives all the scores
         return "Summarized values: " + dieA.getValue() + " " + dieB.getValue() + " " + dieC.getValue() + " " + dieD.getValue() + " " + dieE.getValue() + " ";
     }
 }
