@@ -1,34 +1,36 @@
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
-public class Yahtzee //Is the functionality
+public class Yahtzee
 {
-    Die6 dieA; //Each die is represented by an instance of the `Die6` class. 
-    Die6 dieB; //These five lines define private instance variables for each die.
-    Die6 dieC; //With these variables, the individual dice objects can be accessed 
-    Die6 dieD; //and manipulated within the `Yahtzee` class.
+    Die6 dieA;
+    Die6 dieB;
+    Die6 dieC;
+    Die6 dieD;
     Die6 dieE;
-    int number; //declares varible number
-    public Yahtzee() { 
+    int number;
+    public Yahtzee() {
         dieA = new Die6();
         dieB = new Die6();
-        dieC = new Die6(); //connects to the die6 project
+        dieC = new Die6();
         dieD = new Die6();
         dieE = new Die6();
     }
-    public void allRoll() { //will roll all die at once 
+
+    public void allRoll() {
         dieA.roll();
         dieB.roll();
         dieC.roll();
         dieD.roll();
         dieE.roll();
-    } //establishes peramiter of sides
-    public void roll(int dieNumber) { //rolls a specific die based on the provided die number (1-5)
-        if (dieNumber == 1) { //uses if statements to determine which die to roll
-            dieA.roll(); 
+    }
+
+    public void roll(int dieNumber) {
+        if (dieNumber == 1) {
+            dieA.roll();
         } else if (dieNumber == 2) {
             dieB.roll();
-        } else if (dieNumber == 3) { //whenever a player want to roll a specific die
+        } else if (dieNumber == 3) {
             dieC.roll();
         } else if (dieNumber == 4) {
             dieD.roll();
@@ -36,29 +38,56 @@ public class Yahtzee //Is the functionality
             dieE.roll();
         }           
     }
-    
-    public int getvalue1() { //return current value of each die
+
+    public int getvalue1() {
         return dieA.getValue();
     }
+
     public int getvalue2() {
         return dieB.getValue();
     }
+
     public int getvalue3() {
         return dieC.getValue();
     }
+
     public int getvalue4() {
         return dieD.getValue();
     }
+
     public int getvalue5() {
         return dieE.getValue();
     }
     
-    public int rollAndGetValue() { //method will roll and get value
-        allRoll();
-        return getvalue1(); //to roll all die but get one die
+    public int[] getDiceValues() {
+        return new int[]{dieA.getValue(), dieB.getValue(), dieC.getValue(), dieD.getValue(), dieE.getValue()};
     }
     
-    public String summarize() { //gives all the scores
-        return "Summarized values: " + dieA.getValue() + " " + dieB.getValue() + " " + dieC.getValue() + " " + dieD.getValue() + " " + dieE.getValue() + " ";
+    public int rollAndGetValue() {
+        allRoll();
+        return getvalue1();
+    }
+    
+    public String toString() {
+        return "Dice values: " + Arrays.toString(getDiceValues());
+    }
+
+    public String summarize() {
+        int[] counts = new int[6];
+        int[] diceValues = getDiceValues();
+
+        for (int value : diceValues) {
+            counts[value - 1]++;
+        }
+
+        StringBuilder summary = new StringBuilder();
+        for (int i = 0; i < counts.length; i++) {
+            summary.append((i + 1) + "-" + counts[i]);
+            if (i < counts.length - 1) {
+                summary.append("; ");
+            }
+        }
+
+        return summary.toString();
     }
 }
